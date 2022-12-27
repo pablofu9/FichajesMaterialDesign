@@ -1,0 +1,56 @@
+﻿<Window x:Class="FichajesMaterial.vista.Ajustes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FichajesMaterial.vista"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="Ajustes" Height="450" Width="800"
+        Style="{DynamicResource MaterialDesignWindow}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="#b17cff"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid Margin="0,0,0,388">
+        <ToolBarTray Margin="0,0,0,-25">
+            <ToolBar
+                Background="#7d4dcd"
+                    Style="{StaticResource MaterialDesignToolBar}"
+                    ClipToBounds="False" Margin="-2,0,-20,0">
+                <Button
+                    ToolTip="Inicio"
+                    Content="{materialDesign:PackIcon Kind=Home}" Width="69" Click="Button_Click"
+                    />
+                <Separator />
+                <Button
+                    Click="goFichar"
+                    ToolTip="Fichajes"
+                    Content="{materialDesign:PackIcon Kind=GreasePencil}" Width="135"  />
+                <Button
+                    IsEnabled="False"
+                    Click="goSettings"
+                    ToolTip="Settings"
+                    Content="{materialDesign:PackIcon Kind=CogOutline}" Width="135" />
+                <Button
+                    Click="goInfo"
+                    ToolTip="Information"
+                    Content="{materialDesign:PackIcon Kind=InformationVariant}" Width="135" />
+                <Button
+                    Click="goAddUser"
+                    ToolTip="Añadir user"
+                    Content="{materialDesign:PackIcon Kind=AccountPlusOutline}" Width="135" />
+                <Button
+                    Click="exit"
+                    ToolTip="Añadir user"
+                    Content="{materialDesign:PackIcon Kind=ExitRun}" Width="120" />
+
+            </ToolBar>
+        </ToolBarTray>
+    </Grid>
+</Window>

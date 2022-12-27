@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="fichajes" Class="ModelDatosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-GE01V372\SQLSERVER;Initial Catalog=fichajes;Persist Security Info=True;User ID=sa" SettingsObjectName="FichajesMaterial.Properties.Settings" SettingsPropertyName="fichajesConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.fichajes" Member="fichajes">
+    <Type Name="fichajes">
+      <Column Name="Id_fichaje" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Id_usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="hora_entrada" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="hora_salida" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Association Name="users_fichajes" Member="users" ThisKey="Id_usuario" OtherKey="Id_user" Type="users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.users" Member="users">
+    <Type Name="users">
+      <Column Name="Id_user" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="apellidos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="email" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="telefono" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="users_fichajes" Member="fichajes" ThisKey="Id_user" OtherKey="Id_usuario" Type="fichajes" />
+    </Type>
+  </Table>
+</Database>

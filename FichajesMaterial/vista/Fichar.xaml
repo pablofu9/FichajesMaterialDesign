@@ -1,0 +1,124 @@
+﻿<Window x:Class="FichajesMaterial.vista.Fichar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FichajesMaterial.vista"
+        mc:Ignorable="d"
+        Title="Fichar" Height="450" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        
+        Style="{DynamicResource MaterialDesignWindow}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="#b17cff"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid Margin="0,0,0,388">
+        <ToolBarTray Margin="0,0,0,-25">
+            <ToolBar
+                Background="#7d4dcd"
+                    Style="{StaticResource MaterialDesignToolBar}"
+                    ClipToBounds="False" Margin="0,0,0,-28" HorizontalAlignment="Center" Width="837">
+                <Button
+                    ToolTip="Inicio"
+                    Click="TwitterButton_OnClick"
+                    Content="{materialDesign:PackIcon Kind=Home}" Width="69"
+                    />
+                <Separator />
+                <Button
+                    IsEnabled="False"
+                    ToolTip="Fichajes"
+                    Content="{materialDesign:PackIcon Kind=GreasePencil}" Width="135" Click="Button_Click" />
+                <Button
+                    ToolTip="Settings"
+                    Content="{materialDesign:PackIcon Kind=CogOutline}" Width="135" Click="Button_Click_1" />
+                <Button
+                    ToolTip="Information"
+                    Content="{materialDesign:PackIcon Kind=InformationVariant}" Width="135" Click="Button_Click_2" />
+                <Button
+                    ToolTip="Añadir user"
+                    Content="{materialDesign:PackIcon Kind=AccountPlusOutline}" Width="135" Click="Button_Click_3" />
+                <Button
+                    ToolTip="Añadir user"
+                    Content="{materialDesign:PackIcon Kind=ExitRun}" Width="135" Click="Button_Click_4" />
+
+            </ToolBar>
+        </ToolBarTray>
+        <Grid Margin="0,76,0,-386">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBox
+                x:Name="txtID"
+                HorizontalAlignment="Center"
+                Grid.Row="1"
+                 materialDesign:HintAssist.Hint="Introduce el id del usuario..."
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Center" Width="315" 
+                />
+            <ToggleButton
+                x:Name="toggleActivar"
+                
+                Background="#4CC732"
+                Grid.Row="1"
+            Style="{StaticResource MaterialDesignActionDarkToggleButton}"
+            ToolTip="Id on /off"
+            IsChecked="True" Margin="562,39,118,10"
+                
+                />
+            <GroupBox
+                Grid.Row="0"
+                Header="Bienvenido"
+                Style="{StaticResource MaterialDesignGroupBox}"
+                Margin="16"
+                 materialDesign:ElevationAssist.Elevation="Dp6"
+                BorderThickness="0">
+                <TextBlock
+                Margin="6,6,6,6"
+                TextWrapping="Wrap"
+                Text="Aqui podrás registrar los fichajes del usuario que quieras, si ese usuario ya ha fichado hoy, se le actualizará la hora de salida" />
+            </GroupBox>
+
+            <!-- raised button with progress, useful to auto dismiss/accept something -->
+            <Button
+                x:Name="btnFichar"
+                Click="btnFichar_Click"
+                    Grid.Row="2"
+                Command="{Binding DismissCommand}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                HorizontalAlignment="Center"
+                materialDesign:ButtonProgressAssist.Value="{Binding DismissButtonProgress}"
+                materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                Visibility="{Binding ShowDismissButton, Converter={StaticResource BooleanToVisibilityConverter}}"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="0,20,0,67" Width="316">
+                <StackPanel
+                            Orientation="Horizontal">
+                    <TextBlock
+                        Text="INSERTAR" />
+                    <materialDesign:PackIcon
+                        Margin="4 .5 0 0"
+                        Kind="ArrowRight" />
+                </StackPanel>
+            </Button>
+            <TextBlock
+    Text="{Binding DemoRestartCountdownText}"
+    VerticalAlignment="Center"
+    />
+
+        </Grid>
+
+    </Grid>
+
+</Window> 
+    
+
