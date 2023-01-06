@@ -75,6 +75,7 @@ namespace FichajesMaterial.CRUD
                 //Valor es que no coinciden
                 if (comparamos != 0)
                 {
+
                     insertFichaje(f1, idUser);
                     //Hay un fichaje de ese usuario pero es de otro dia, procedemos a fichar
 
