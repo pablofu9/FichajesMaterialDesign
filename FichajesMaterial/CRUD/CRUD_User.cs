@@ -48,6 +48,19 @@ namespace FichajesMaterial.CRUD
             return fichajes;
         }
 
+        public static Boolean buscarUser(int idUser)
+        {
+            users u = datos.users.FirstOrDefault(es => es.Id_user == idUser);
+            if(u == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         /*Lo que este metodo va a hacer es:
          * Buscamos si el id del usuario ya esta en la tabla fichajes
          * Si no esta, introducimos uno nuevo
@@ -56,7 +69,12 @@ namespace FichajesMaterial.CRUD
          */
         public static void buscarFichaje(fichajes f1, int idUser)
         {
-            fichajes f = datos.fichajes.FirstOrDefault(es => es.Id_usuario == idUser);
+            
+            var fechaHoy = DateTime.Today;
+            var fechaBuscada = fechaHoy.Date;
+            fichajes f = datos.fichajes.FirstOrDefault(es => es.Id_usuario == idUser && es.fecha.Date == fechaHoy);
+            
+
             if (f == null)
             {
 
@@ -66,10 +84,8 @@ namespace FichajesMaterial.CRUD
             else
             {
                 //Comparamos las fechas
-                var fechaEncontrada = f.fecha;
-                var fechaHoy = DateTime.Today;
-                var fechaBuscada = fechaHoy.Date;
 
+                var fechaEncontrada = f.fecha;
                 int comparamos = DateTime.Compare(fechaEncontrada, fechaBuscada);
                 //Cuando comparamos sea == 0 significa que las fechas coinciden, cualquier otro
                 //Valor es que no coinciden

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FichajesMaterial.vista"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Title="Ajustes" Height="450" Width="800"
@@ -52,5 +52,42 @@
 
             </ToolBar>
         </ToolBarTray>
+        <Grid Margin="0,71,0,-388">
+
+            <WindowsFormsHost  HorizontalAlignment="Center" Height="160" Margin="0,12,0,0" VerticalAlignment="Top" Width="728">
+                <rv:ReportViewer x:Name="_reportViewer"/>
+            </WindowsFormsHost>
+            <TextBox
+                x:Name="txtID"
+                HorizontalAlignment="Left"
+                 materialDesign:HintAssist.Hint="Id del usuario"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Top" Width="315" Margin="36,199,0,0" 
+                />
+            
+            <Button
+                x:Name="btnDias"
+                Click="btnDias_Click"
+                Command="{Binding DismissCommand}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                HorizontalAlignment="Left"
+                materialDesign:ButtonProgressAssist.Value="{Binding DismissButtonProgress}"
+                materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                Visibility="{Binding ShowDismissButton, Converter={StaticResource BooleanToVisibilityConverter}}"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="400,172,0,56" Width="316">
+                <StackPanel
+                            Orientation="Horizontal">
+                    <TextBlock
+                        Text="CONCEDER"/>
+                    <materialDesign:PackIcon
+                        Margin="4 .5 0 0"
+                        Kind="ArrowRight" />
+                </StackPanel>
+            </Button>
+        </Grid>
+
+
+
     </Grid>
+
 </Window>
